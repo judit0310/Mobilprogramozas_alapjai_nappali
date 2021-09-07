@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Gradle build",
+      "setup": "",
+      "run": "gradle build --warning-mode=all",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
