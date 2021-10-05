@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });*/
+        Button adatok = findViewById(R.id.adattarolasgomb);
+        adatok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Adattarolas.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
