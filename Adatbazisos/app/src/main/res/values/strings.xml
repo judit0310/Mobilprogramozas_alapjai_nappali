@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Adatbazisos</string>
+    <string name="felhasznalonev">Felhasználónév</string>
+    <string name="csaladnev">Családnév</string>
+    <string name="keresztnev">Keresztnév</string>
+    <string name="hozzaadas">Hozzáadás</string>
+    <string name="kiscica" translatable="false"></string>
+    <string name="uzenet">Hozzáadás sikeres!</string>
+    <string name="marfoglalt">Már foglalt</string>
+</resources>

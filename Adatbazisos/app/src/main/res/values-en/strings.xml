@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DB Play</string>
+    <string name="felhasznalonev">Username</string>
+    <string name="csaladnev">Last Name</string>
+    <string name="keresztnev">First Name</string>
+    <string name="hozzaadas">Add</string>
+    <string name="uzenet">Succesfully added!</string>
+    <string name="marfoglalt">Already in use</string>
+</resources>
