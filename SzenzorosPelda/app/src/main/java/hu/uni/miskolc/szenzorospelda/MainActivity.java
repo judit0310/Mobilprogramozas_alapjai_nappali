@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,6 +17,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor gyroscope;
     private LocationManager locationManager;
     private MapView mapView;
-
+    private WifiManager wifiManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +54,34 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         mapView.onCreate(savedInstanceState);
         SajatLocationListener listener = new SajatLocationListener(getApplicationContext());
         mapView.getMapAsync(listener);
-     }
 
+
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        BroadcastReceiver wifiScanReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                boolean success = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false);
+                if (success){
+                    scanSucces();
+                }else{
+                    scanFailure();
+                }
+            }
+        };
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        registerReceiver(wifiScanReceiver, intentFilter);
+
+        wifiManager.startScan();
+    }
+
+    private void scanSucces() {
+        System.out.println(wifiManager.getScanResults());
+    }
+
+
+    private void scanFailure() {
+    }
     @Override
     protected void onResume() {
         mapView.onResume();
